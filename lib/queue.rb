@@ -1,17 +1,19 @@
 require './lib/data_cleaner'
-require './lib/attendee_builder'
-
+# require './lib/attendee_builder'
 
 class Queue
 
+  attr_accessor :data_cleaner, :attendees_clean
+
   def initialize
-    #initialize attendee
+    # @data = Hash.new
+    @data_cleaner = DataCleaner.new
   end
 
-  def insert queue hash (name)
-    #insert attendees from attendee builder?
-    queue hash = {}
-    queue hash ["date"] = clean_date etc etc
+  def insert_queue_hash
+    #insert attendees from attendee builder or from data cleaner,
+    queue_hash = {}
+    queue_hash["first_name"] = @data_cleaner.attendees_clean
 
   end
 
@@ -46,3 +48,6 @@ class Queue
 
 
 end
+
+puts q = Queue.new
+puts q.insert_queue_hash

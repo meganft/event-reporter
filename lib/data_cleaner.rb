@@ -1,58 +1,61 @@
+require 'pry'
 require 'csv'
 require './lib/csv_loader'
 
 class DataCleaner
 
-  def id(id)
+  attr_accessor :contents, :attendees_clean
+
+  def clean_id( )
     id.to_i
   end
 
-  def first_name(firstname)
+  def clean_first_name(firstname)
     firstname.to_s.downcase.capitalize
   end
 
-  def last_name(lastname)
+  def clean_last_name(lastname)
     lastname.to_s.downcase.capitalize
   end
 
-  def email(email_address)
+  def clean_email(email_address)
     email_address
   end
 
-  def phone_number(homephone)
+  def clean_phone_number(homephone)
     homephone.to_s.chars.grep(/\d/).join.rjust(10,"0")
   end
 
-  def street(street)
+  def clean_street(street)
     street
   end
 
-  def city(city)
+  def clean_city(city)
     city.to_s.downcase.capitalize
   end
 
-  def state(state)
+  def  clean_state(state)
     state.to_s.upcase
   end
 
-  def zipcode(zipcode)
+  def clean_zipcode(zipcode)
     zipcode.to_s.rjust(5,"0")[0..4]
+  end
+
+  def attendees_clean
+  contents = CSV.open 'full_event_attendees.csv', headers: true, header_converters: :symbol
+  attendees_clean = Hash.new
+  attendees_clean = contents.each do |row|
+
+    firstname = clean_first_name(row[:first_name])
+    lastname = clean_last_name(row[:last_name])
+    zipcode = clean_zipcode(row[:zipcode])
+
+    attendees_clean = puts "#{firstname}" #etc etc. want this in a hash
+    end
   end
 
 end
 
-puts d = DataCleaner.new
-puts d.last_name("talbot")
-
-
-# Used this to test
- # contents = CSV.read "full_event_attendees.csv", headers: true, header_converters: :symbol
-  # contents.each do |row|
-  #   first_name = clean_first_name(row[:first_name])
-  #   last_name = clean_last_name(row[:last_name])
-  #   email_address = clean_email(row[:email_address])
-  #   zipcode = clean_zipcode(row[:zipcode])
-  #   city = clean_city(row[:city])
-  #   state = clean_state(row[:state])
-  #
-  #   puts "#{first_name} #{last_name} #{email_address} #{zipcode} #{city} #{state}"
+# puts d = DataCleaner.new
+# puts d.attendees_clean
