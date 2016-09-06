@@ -1,37 +1,36 @@
 require 'pry'
 require 'csv'
-require_relative 'data_cleaner'
-
+# require './lib/manager'
 
 class Queue
 
-  attr_accessor :attendee_info
+  attr_accessor :queue
 
   def initialize
-    @attendee_info = DataCleaner.new.clean_attendees
-    binding.pry
+    @queue = []
   end
 
-  def load_file
-
-  end
-
-  def insert_queue_hash
-    #insert attendees from attendee builder or from data cleaner,
-    # queue_hash = {}
-    # queue_hash["first_name"] = @data_cleaner.attendees_clean
-
+  def insert(attendee)
+    @queue << attendee
   end
 
   def count
-    @attendee_info.count
+   @queue.count
   end
 
   def clear
-    # just clear method on hash made above hash.clear
+    @queue.clear
+  end
+
+  def district
+    
   end
 
   def print
+    binding.pry
+    @queue.each do |line|
+      puts line
+    end
 
   end
 
@@ -40,6 +39,7 @@ class Queue
   end
 
   def save
+    @queue
 
   end
 
@@ -47,14 +47,10 @@ class Queue
 
   end
 
-  def district
-
-  end
-
 
 
 end
-puts a = Queue.new
+# puts a = Queue.new
 # puts  a.load_file('full_event_attendees.csv')
 # # puts q = Queue.new
 # puts q.count
