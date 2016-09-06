@@ -44,18 +44,18 @@ class DataCleaner
 
   def attendees_clean
   contents = CSV.open 'full_event_attendees.csv', headers: true, header_converters: :symbol
-  attendees_clean = Hash.new
-  attendees_clean = contents.each do |row|
-
+  cleaned_attendees = {}
+   contents.each do |row|
     firstname = clean_first_name(row[:first_name])
     lastname = clean_last_name(row[:last_name])
     zipcode = clean_zipcode(row[:zipcode])
 
-    attendees_clean = puts "#{firstname}" #etc etc. want this in a hash
+    cleaned_attendees[row[:id]] = {"first_name" => firstname,"last_name" => lastname}
     end
+    return cleaned_attendees
   end
 
 end
 
-# puts d = DataCleaner.new
-# puts d.attendees_clean
+puts d = DataCleaner.new
+puts d.attendees_clean
