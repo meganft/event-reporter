@@ -1,24 +1,30 @@
-require './lib/data_cleaner'
-# require './lib/attendee_builder'
+require 'pry'
+require 'csv'
+require_relative 'data_cleaner'
+
 
 class Queue
 
-  attr_accessor :data_cleaner, :attendees_clean
+  attr_accessor :attendee_info
 
   def initialize
-    # @data = Hash.new
-    @data_cleaner = DataCleaner.new
+    @attendee_info = DataCleaner.new.clean_attendees
+    binding.pry
+  end
+
+  def load_file
+
   end
 
   def insert_queue_hash
     #insert attendees from attendee builder or from data cleaner,
-    queue_hash = {}
-    queue_hash["first_name"] = @data_cleaner.attendees_clean
+    # queue_hash = {}
+    # queue_hash["first_name"] = @data_cleaner.attendees_clean
 
   end
 
   def count
-    # count hash made above hash.count
+    @attendee_info.count
   end
 
   def clear
@@ -48,6 +54,7 @@ class Queue
 
 
 end
-
-puts q = Queue.new
-puts q.insert_queue_hash
+puts a = Queue.new
+# puts  a.load_file('full_event_attendees.csv')
+# # puts q = Queue.new
+# puts q.count
