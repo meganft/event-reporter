@@ -6,6 +6,10 @@ class DataCleaner
 
   attr_accessor :contents, :attendees_clean
 
+  def contents
+    contents = CSV.open 'full_event_attendees.csv', headers: true, header_converters: :symbol
+  end
+
   def clean_id( )
     id.to_i
   end
@@ -42,15 +46,20 @@ class DataCleaner
     zipcode.to_s.rjust(5,"0")[0..4]
   end
 
-  def attendees_clean
-  contents = CSV.open 'full_event_attendees.csv', headers: true, header_converters: :symbol
-  cleaned_attendees = {}
-   contents.each do |row|
+  def clean_attendees
+  cleaned_attendees = Hash.new
+   contents.each_with_index do |row, i|
     firstname = clean_first_name(row[:first_name])
     lastname = clean_last_name(row[:last_name])
     zipcode = clean_zipcode(row[:zipcode])
+    email = clean_email(row[:email])
+    homephone = clean_phone_number(row[:homephone])
+    street = clean_street(row[:street])
+    city = clean_city(row[:city])
+    state = clean_state(row[:state])
+    zipcode = clean_zipcode(row[:zipcode])
 
-    cleaned_attendees[row[:id]] = {"first_name" => firstname,"last_name" => lastname}
+    cleaned_attendees[i + 1] = {"first_name" => firstname,"last_name" => lastname, "zipcode" => zipcode, "email" => email, "homephone" => homephone}
     end
     return cleaned_attendees
   end
@@ -58,4 +67,4 @@ class DataCleaner
 end
 
 puts d = DataCleaner.new
-puts d.attendees_clean
+puts d.clean_attendees
