@@ -61,17 +61,18 @@ class ManagerTest < Minitest::Test
     assert_equal 79, manager.queue.count
   end
 
-  def test_manager_can_search_multiple_parameters
+  def test_manager_empty_does_not_raise_error
+    #change this to be only for johnson with space after
      manager = Manager.new
 
      manager.load
      assert_equal 0, manager.queue.count
 
-     manager.find("last_name", "Johnson ")
+     manager.find("last_name", "Johnson")
 
-     assert_equal 0, manager.queue.count
+     assert_equal 15, manager.queue.count
 
-     assert_equal [], manager.queue.clear
+    #  assert_equal [], manager.queue.clear
 
    end
 

@@ -30,7 +30,6 @@ class Manager
   end
 
   def count
-
     @queue.count
   end
 
