@@ -95,11 +95,11 @@ class Queue
     # File.open(filename,'w') do |file|
     #   file.puts table
 
-    template = File.read "html_format.erb"
-    erb_template = ERB.new template
+    data_template = File.read "html_format.erb"
+    erb_template = ERB.new data_template
     export_report = erb_template.result(binding)
-    filename = "output_table.html"
-    File.open("./output/#{filename}",'w') do |file|
+    # filename = "output_table.html"
+    File.open("./output/output_table.html",'w') do |file|
       file.puts export_report
 
     end

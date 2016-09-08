@@ -2,7 +2,7 @@
 <head>
 <title>Event Reporter Data Report</title>
 </head>
-<body bgcolor="D6D2D8">
+<body>
 
 <h1><font color="blue"><center>Event Attendee Information</center></font></h1>
 
@@ -21,7 +21,7 @@
     <% i = 0 %>
     <% @queue.each do |attendee| %>
       <td><%= "#{attendee[i]['first_name']}" %></td>
-      <td><%= "#{attendee[i]['last_name]}" %></td>
+      <td><%= "#{attendee[i]['last_name']}" %></td>
       <td><%= i += 1 %></td>
       <%= end %><
     </tr>
