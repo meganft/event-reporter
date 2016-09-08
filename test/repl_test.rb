@@ -26,6 +26,4 @@ class ReplTest < Minitest::Test
     assert_equal
   end
 
-
-
 end

@@ -67,6 +67,7 @@ class Queue
       attendee[attribute]
       end
       print
+        
   end
 
   def save(filename = "event_attendes.csv")
@@ -76,6 +77,7 @@ class Queue
       @queue.each do |hash|
         csv << hash.values
       end
+
     end
   end
 
@@ -97,6 +99,7 @@ class Queue
     filename = "output_table.html"
     File.open("./output/#{filename}",'w') do |file|
       file.puts export_report
+
     end
 
   end

@@ -57,6 +57,7 @@ include Help
 
     elsif @command1 == "quit"
       puts "Thank you for visiting Event Reporter!"
+    else puts "Not a good command. Try again!"
   end
   end
 
