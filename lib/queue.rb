@@ -53,7 +53,9 @@ class Queue
     queue.each_with_index do |row, i|
       printf "%-15s %-15s %-30s %-10s %-20s %-10s %-35s %s\n",
       queue[i]['last_name'],
-      queue[i]['first_name'], queue[i]['email_address'], queue[i]['zipcode'],
+      queue[i]['first_name'],
+      queue[i]['email_address'],
+      queue[i]['zipcode'],
       queue[i]['city'],
       queue[i]['state'],
       queue[i]['street'],
@@ -67,7 +69,7 @@ class Queue
       attendee[attribute]
       end
       print
-        
+        # binding.pry
   end
 
   def save(filename = "event_attendes.csv")

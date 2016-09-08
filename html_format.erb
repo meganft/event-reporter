@@ -18,10 +18,11 @@
     <th width="5%", align="left">District</th>
   </tr>
   <tr>
+    <% i = 0 %>
     <% @queue.each do |attendee| %>
-      <td><%= "#{attendee["first_name"]}" %></td>
-      <td><%= "#{attendee["last_name"]}" %></td>
-      <td></td>
+      <td><%= "#{attendee[i]['first_name']}" %></td>
+      <td><%= "#{attendee[i]['last_name]}" %></td>
+      <td><%= i += 1 %></td>
       <%= end %><
     </tr>
 
