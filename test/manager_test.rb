@@ -19,7 +19,7 @@ class ManagerTest < Minitest::Test
   def test_clean_returns_a_hash_of_cleaned_data
     manager = Manager.new
 
-    expected = {1 => { "first_name"=>"Allison", "last_name"=>"Nguyen",  "email_address"=>"arannon@jumpstartlab.com", "homephone"=>"6154385000","street"=>"3155 19th St NW", "city"=>"Washington", "state"=>"DC", "zipcode"=>"20010"}}
+    expected = {1 => {"first_name"=>"Allison", "last_name"=>"Nguyen",  "email_address"=>"arannon@jumpstartlab.com", "homephone"=>"6154385000","street"=>"3155 19th St NW", "city"=>"Washington", "state"=>"DC", "zipcode"=>"20010"}}
      assert_equal expected, manager.load("full_event_attendees_dirty.csv")
    end
 
@@ -58,11 +58,10 @@ class ManagerTest < Minitest::Test
 
     manager.find("first_name", "Mary")
 
-    assert_equal 79, manager.queue.count
+    assert_equal 16, manager.queue.count
   end
 
   def test_manager_empty_does_not_raise_error
-    #change this to be only for johnson with space after
      manager = Manager.new
 
      manager.load
@@ -72,7 +71,7 @@ class ManagerTest < Minitest::Test
 
      assert_equal 15, manager.queue.count
 
-    #  assert_equal [], manager.queue.clear
+     assert_equal [], manager.queue.clear
 
    end
 

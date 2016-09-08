@@ -7,7 +7,7 @@ require './lib/help'
 class HelpTest < Minitest::Test
 
   def test_help_prints_a_listing_of_possible_commands
-     assert_equal nil, Help.all
+     assert_equal nil, Help.commands
    end
 
 end

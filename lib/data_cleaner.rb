@@ -4,12 +4,6 @@
 
 module DataCleaner
 
-  # attr_accessor :contents, :attendees_clean
-
-  # def contents
-  #   contents = CSV.open 'full_event_attendees.csv', headers: true, header_converters: :symbol
-  # end
-
   def DataCleaner.clean_id( )
     id.to_i
   end
@@ -59,9 +53,11 @@ module DataCleaner
     state = clean_state(row[:state])
     zipcode = clean_zipcode(row[:zipcode])
 
-    cleaned_attendees[i + 1] = {"first_name" => first_name,"last_name" => last_name, "email_address" => email_address, "homephone" => homephone, "street" => street, "city" => city, "state" => state, "zipcode" => zipcode}
+    cleaned_attendees[i+1] = {"first_name" => first_name,"last_name" => last_name, "email_address" => email_address, "homephone" => homephone, "street" => street, "city" => city, "state" => state, "zipcode" => zipcode}
     end
+
     return cleaned_attendees
+
   end
 
 

@@ -19,14 +19,15 @@ class Manager
   end
 
   def clean(attendees)
-    clean_attendees = DataCleaner.clean_attendees(attendees)
+    @clean_attendees = DataCleaner.clean_attendees(attendees)
   end
 
   def find(attribute, criteria)
+    @queue.clear
     @clean_attendees.select do |row, attendee|
       @queue.insert(attendee) if attendee[attribute] == criteria
-      end
-# binding.pry
+        end
+      return
   end
 
   def count
@@ -36,7 +37,5 @@ class Manager
   def clear
     @queue.clear
   end
-
-
 
 end

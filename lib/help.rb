@@ -1,7 +1,7 @@
 module Help
 
-  def Help.all
-    puts  "The available individual commands are: [load <filename>] [queue count] [queue clear] [queue district] [queue print] [queue print by <attribute>] [queue save to <filename.csv>] [queue export html <filename.csv>] [find <attribute> <criteria>]. Type  the command name to learn more about each."
+  def Help.commands
+    puts  "The available individual commands are: [load <filename>] [queue count] [queue clear] [queue district] [queue print] [queue print by <attribute>] [queue save to <filename.csv>] [queue export html <filename.csv>] [find <attribute> <criteria>]. Type the command name to learn more about each!"
   end
 
   def Help.count
@@ -24,11 +24,11 @@ module Help
     puts "Prints the data table sorted by the specified attribute like zipcode."
   end
 
-  def Help.save_to
+  def Help.save
     puts "Exports the current queue to the specified filename as a  CSV."
   end
 
-  def Help.export_to
+  def Help.export
     puts "Exports the current queue to the specified filename as a valid HTML file."
   end
 
