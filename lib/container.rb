@@ -4,13 +4,14 @@ require 'csv'
 require 'json'
 require 'open-uri'
 require 'erb'
-# require './lib/manager'
+require './lib/manager'
+require './lib/data_cleaner'
 
-class Queue
+class Container
 
   # Sunlight::Base.api_key = "43e0b18e571447ecba2bb84b44dd4209"
 
-  attr_accessor :queue
+  attr_accessor  :queue
 
   def initialize
     @queue = []
@@ -25,6 +26,7 @@ class Queue
   end
 
   def clear
+
     @queue.clear
   end
 
@@ -48,19 +50,11 @@ class Queue
    end
   end
 
-  def print
+  def queue_print
     printf "\n%-15s %-15s %-30s %-10s %-20s %-10s %-45s %-15s %s\n", "LAST NAME", "FIRST NAME", "EMAIL", "ZIPCODE", "CITY", "STATE", "STREET", "PHONE", "DISTRICT"
-    queue.each_with_index do |row, i|
-      printf "%-15s %-15s %-30s %-10s %-20s %-10s %-35s %s\n",
-      queue[i]['last_name'],
-      queue[i]['first_name'],
-      queue[i]['email_address'],
-      queue[i]['zipcode'],
-      queue[i]['city'],
-      queue[i]['state'],
-      queue[i]['street'],
-      queue[i]['phone']
-      queue[i]['district']
+    @queue.each_with_index do |row, i|
+      printf "\n%-15s %-15s %-30s %-10s %-20s %-10s %-45s %-15s %s\n",
+      queue[i]['last_name'], queue[i]['first_name'], queue[i]['email_address'], queue[i]['zipcode'], queue[i]['city'], queue[i]['state'], queue[i]['street'], queue[i]['phone']
     end
   end
 
@@ -68,7 +62,7 @@ class Queue
     @queue = queue.sort_by do |attendee|
       attendee[attribute]
       end
-      print
+      queue_print
         # binding.pry
   end
 
@@ -95,11 +89,19 @@ class Queue
     # File.open(filename,'w') do |file|
     #   file.puts table
 
-    data_template = File.read "html_format.erb"
-    erb_template = ERB.new data_template
-    export_report = erb_template.result(binding)
+    # data_template = File.read "html_format.erb"
+    # erb_template = ERB.new data_template
+    # export_report = erb_template.result(binding)
     # filename = "output_table.html"
-    File.open("./output/output_table.html",'w') do |file|
+    # File.open("./output/#{filename}.html",'w') do |file|
+    #   file.puts export_report
+
+    template = File.read "html_format.erb"
+
+    erb_template = ERB.new template
+    export_report = erb_template.result(binding)
+    filename = "output_table4.html"
+    File.open("./output/#{filename}",'w') do |file|
       file.puts export_report
 
     end
@@ -108,5 +110,5 @@ class Queue
 
 end
 # puts a = Queue.new
-# puts a.print
+# puts a.find("last_name","Johnson")
 # puts a.count

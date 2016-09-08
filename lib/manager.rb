@@ -1,19 +1,20 @@
 require 'pry'
 require 'csv'
 require './lib/data_cleaner'
-require './lib/queue'
+require './lib/container'
 
 class Manager
 
   include DataCleaner
 
-  attr_reader :queue
+  attr_accessor :queue
 
   def initialize
-    @queue = Queue.new
+    @queue = Container.new
+    #change every Queue class to a container
   end
 
-  def load(filename = 'full_event_attendees.csv')
+  def load_file(filename = 'full_event_attendees.csv')
     attendees = CSV.open filename, headers: true, header_converters: :symbol
     @clean_attendees = clean(attendees)
   end
@@ -25,9 +26,8 @@ class Manager
   def find(attribute, criteria)
     @queue.clear
     @clean_attendees.select do |row, attendee|
-      @queue.insert(attendee) if attendee[attribute] == criteria
-        end
-      return
+      @queue.insert(attendee) if attendee[attribute].downcase == criteria
+    end
   end
 
   def count
@@ -39,3 +39,6 @@ class Manager
   end
 
 end
+#
+# puts m = Manager.new
+# puts m.find("first_name","Sarah")

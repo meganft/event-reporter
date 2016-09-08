@@ -1,12 +1,5 @@
-# require 'pry'
-# require 'csv'
-
-
+require 'pry'
 module DataCleaner
-
-  def DataCleaner.clean_id( )
-    id.to_i
-  end
 
   def DataCleaner.clean_first_name(first_name)
     first_name.to_s.downcase.capitalize
@@ -17,7 +10,7 @@ module DataCleaner
   end
 
   def DataCleaner.clean_email(email_address)
-    email_address
+    email_address.to_s
   end
 
   def DataCleaner.clean_phone_number(homephone)
@@ -25,7 +18,7 @@ module DataCleaner
   end
 
   def DataCleaner.clean_street(street)
-    street
+    street.to_s
   end
 
   def DataCleaner.clean_city(city)
@@ -42,6 +35,7 @@ module DataCleaner
 
   def DataCleaner.clean_attendees(attendees)
     cleaned_attendees = {}
+  
     attendees.each_with_index do |row, i|
     first_name = clean_first_name(row[:first_name])
     last_name = clean_last_name(row[:last_name])

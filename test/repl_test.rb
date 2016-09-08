@@ -1,7 +1,4 @@
-require 'pry'
-gem 'minitest', '~> 5.2'
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative 'test_helper'
 require './lib/repl'
 
 
@@ -17,6 +14,7 @@ class ReplTest < Minitest::Test
     repl = Repl.new
     repl.command
     input = "help"
+
     assert_equal input, repl.command
   end
 

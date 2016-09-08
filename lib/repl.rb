@@ -1,15 +1,16 @@
+require 'pry'
 require './lib/manager'
 require './lib/help'
-require './lib/queue'
+require './lib/container'
 # require './lib/event_reporter'
 
 class Repl
 
-include Help
+  include Help
 
   def initialize
     @manager = Manager.new
-    @queue = Queue.new
+    @container = Container.new
     # @help = Help.new
   end
 
@@ -26,42 +27,58 @@ include Help
   end
 
   def do_command
-    if @command1 == "load"
-      puts @manager.load
-    elsif @command1 == "queue" && @command2 == "count"
-       puts @manager.count
-    elsif @command1 == "queue" && @command2 == "print"
-      @queue.print
-    elsif @command1 == "help"
-      Help.commands
-    elsif @command1 == "help" && @command2 == "count"
-      Help.count
-    elsif @command1 == "help" && @command2 == "clear"
-      Help.clear
-    elsif @command1 == "help" && @command2 == "district"
-      Help.district
-    elsif @command1 == "help" && @command2 == "print"
-      Help.print
-    elsif @command1 == "help" && @command2 == "print_by"
-      Help.print_by
-    elsif @command1 == "help" && @command2 == "save"
-      Help.save
-    elsif @command1 == "help" && @command2 == "export"
-      Help.export
-    elsif @command1 == "help" && @command2 == "find"
-      Help.find
-    elsif @command1 == "find" #this one didn't load
-      @manager.find(@command2,@command3)
-    elsif @command1 == "save"
-      @queue.save()
+    case @command1
+    when "load" then @manager.load_file
+    when "help" then do_help
+    when "queue" then do_queue
+    when "find" then @manager.find(@command2, @command3)
+    when "quit" then puts "Thanks for visiting!" && exit!
+    else puts "I'm not sure what you mean. Try a different command."
+    end
+    command
+  end
+  #
+  # def do_load
+  #
+  #  @manager.load
+  # end
 
-    elsif @command1 == "quit"
-      puts "Thank you for visiting Event Reporter!"
-    else puts "Not a good command. Try again!"
+  def do_help
+    case @command1
+    when "help" then Help.commands
+    end
+    #figure out how to take command 1 out of this method to avoid dupliate printing
+    case @command2
+    when "count" then  Help.count
+    when "clear" then  Help.clear
+    when "district" then  Help.district
+    when "print" then  Help.print
+    when "print_by" then  Help.print_by
+    when "save" then  Help.save
+    when "export" then  Help.export
+    when "find" then  Help.find
+    end
   end
+
+  def do_queue
+    case @command2
+    when "count" then puts @manager.count
+    when "clear" then  puts @manager.clear
+    when "district" then @container.queue_district
+    when "print" then  @container.queue_print
+    when "print_by" then  @container.print_by(@command3)
+    when "save" then  @container.save(@command3)
+    when "export" then  @container.export(@command3)
+    end
   end
+
+  # def do_find
+  #   case @command1
+  #   when "find" then @manager.find(@command2, @command3)
+  #   end
+  # end
 
 end
 
-# puts r = Repl.new
-# puts r.command
+puts r = Repl.new
+puts r.command

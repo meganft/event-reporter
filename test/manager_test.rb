@@ -1,7 +1,4 @@
-require 'pry'
-gem 'minitest', '~> 5.2'
-require 'minitest/autorun'
-require 'minitest/pride'
+require_relative 'test_helper'
 require './lib/manager'
 
 class ManagerTest < Minitest::Test
@@ -14,6 +11,7 @@ class ManagerTest < Minitest::Test
   def test_clean_data_loads_as_hash
     manager = Manager.new
     assert_instance_of Hash, manager.load
+    #change name of load and print methods?
   end
 
   def test_clean_returns_a_hash_of_cleaned_data
@@ -74,7 +72,5 @@ class ManagerTest < Minitest::Test
      assert_equal [], manager.queue.clear
 
    end
-
-
 
 end
