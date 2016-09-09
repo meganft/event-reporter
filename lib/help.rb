@@ -37,5 +37,4 @@ module Help
   end
 
 end
-#
-# puts Help.help
+
