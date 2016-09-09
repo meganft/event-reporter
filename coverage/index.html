@@ -14,26 +14,26 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-09-08T19:54:27-06:00">2016-09-08T19:54:27-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-09-09T08:42:13-06:00">2016-09-09T08:42:13-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">40.0%</span></span>
+    (<span class="covered_percent"><span class="red">40.32%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.4
+         0.42
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>5</b> files in total.
-    <b>185</b> relevant lines. 
-    <span class="green"><b>74</b> lines covered</span> and
+    <b>186</b> relevant lines. 
+    <span class="green"><b>75</b> lines covered</span> and
     <span class="red"><b>111</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -62,12 +62,12 @@
       
       <tr>
         <td class="strong"><a href="#5eb632f316ccb7ffa651f169b7c23f5df2e3af85" class="src_link" title="lib/data_cleaner.rb">lib/data_cleaner.rb</a></td>
-        <td class="red strong">34.38 %</td>
-        <td>56</td>
-        <td>32</td>
-        <td>11</td>
+        <td class="red strong">36.36 %</td>
+        <td>58</td>
+        <td>33</td>
+        <td>12</td>
         <td>21</td>
-        <td>0.3</td>
+        <td>0.4</td>
       </tr>
       
       <tr>
@@ -397,7 +397,7 @@
         <li class="missed" data-hits="0" data-linenumber="45">
           
           
-          <code class="ruby">    else puts &quot;Too many entries&quot;</code>
+          <code class="ruby">    else puts &quot;Sorry, there are too many entries to lookup district information.&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
@@ -689,10 +689,10 @@
         <div class="source_table" id="5eb632f316ccb7ffa651f169b7c23f5df2e3af85">
   <div class="header">
     <h3>lib/data_cleaner.rb</h3>
-    <h4><span class="red">34.38 %</span> covered</h4>
+    <h4><span class="red">36.36 %</span> covered</h4>
     <div>
-      <b>32</b> relevant lines. 
-      <span class="green"><b>11</b> lines covered</span> and
+      <b>33</b> relevant lines. 
+      <span class="green"><b>12</b> lines covered</span> and
       <span class="red"><b>21</b> lines missed.</span>
     </div>
   </div>
@@ -913,115 +913,115 @@
         <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
-          <code class="ruby">  def DataCleaner.clean_attendees(attendees)</code>
+          <code class="ruby">private</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="37">
-          
-          
-          <code class="ruby">    cleaned_attendees = {}</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="38">
+        <li class="never" data-hits="" data-linenumber="37">
           
           
           <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="38">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def DataCleaner.clean_attendees(attendees)</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="39">
           
           
-          <code class="ruby">    attendees.each_with_index do |row, i|</code>
+          <code class="ruby">    cleaned_attendees = {}</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
-          <code class="ruby">    first_name = clean_first_name(row[:first_name])</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="41">
           
           
-          <code class="ruby">    last_name = clean_last_name(row[:last_name])</code>
+          <code class="ruby">    attendees.each_with_index do |row, i|</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="42">
           
           
-          <code class="ruby">    zipcode = clean_zipcode(row[:zipcode])</code>
+          <code class="ruby">    first_name = clean_first_name(row[:first_name])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="43">
           
           
-          <code class="ruby">    email_address = clean_email(row[:email_address])</code>
+          <code class="ruby">    last_name = clean_last_name(row[:last_name])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="44">
           
           
-          <code class="ruby">    homephone = clean_phone_number(row[:homephone])</code>
+          <code class="ruby">    zipcode = clean_zipcode(row[:zipcode])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="45">
           
           
-          <code class="ruby">    street = clean_street(row[:street])</code>
+          <code class="ruby">    email_address = clean_email(row[:email_address])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="46">
           
           
-          <code class="ruby">    city = clean_city(row[:city])</code>
+          <code class="ruby">    homephone = clean_phone_number(row[:homephone])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="47">
           
           
-          <code class="ruby">    state = clean_state(row[:state])</code>
+          <code class="ruby">    street = clean_street(row[:street])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="48">
           
           
-          <code class="ruby">    zipcode = clean_zipcode(row[:zipcode])</code>
+          <code class="ruby">    city = clean_city(row[:city])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="missed" data-hits="0" data-linenumber="49">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    state = clean_state(row[:state])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="50">
           
           
-          <code class="ruby">    cleaned_attendees[i+1] = {&quot;first_name&quot; =&gt; first_name,&quot;last_name&quot; =&gt; last_name, &quot;email_address&quot; =&gt; email_address, &quot;homephone&quot; =&gt; homephone, &quot;street&quot; =&gt; street, &quot;city&quot; =&gt; city, &quot;state&quot; =&gt; state, &quot;zipcode&quot; =&gt; zipcode}</code>
+          <code class="ruby">    zipcode = clean_zipcode(row[:zipcode])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="52">
           
           
-          <code class="ruby">    return cleaned_attendees</code>
+          <code class="ruby">    cleaned_attendees[i+1] = {&quot;first_name&quot; =&gt; first_name,&quot;last_name&quot; =&gt; last_name, &quot;email_address&quot; =&gt; email_address, &quot;homephone&quot; =&gt; homephone, &quot;street&quot; =&gt; street, &quot;city&quot; =&gt; city, &quot;state&quot; =&gt; state, &quot;zipcode&quot; =&gt; zipcode}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="54">
+        <li class="missed" data-hits="0" data-linenumber="54">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    return cleaned_attendees</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
@@ -1031,6 +1031,18 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
           
           
           <code class="ruby">end</code>

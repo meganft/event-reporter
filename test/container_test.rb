@@ -3,9 +3,6 @@ require './lib/container'
 
 class ContainerTest < Minitest::Test
 
-  #setup method  to not have to copy into every file, change names on reuired files
-
-
   def test_it_returns_queue_in_an_array
     q = Container.new
 
@@ -59,7 +56,6 @@ class ContainerTest < Minitest::Test
   end
 
   def test_it_will_save_to_csv
-    #testing for this and html ?
     q = Container.new
     expected = {"first_name"=>"Allison", "last_name"=>"Nguyen",  "email_address"=>"arannon@jumpstartlab.com", "homephone"=>"6154385000","street"=>"3155 19th St NW", "city"=>"Washington", "state"=>"DC", "zipcode"=>"20010"}
 
@@ -79,7 +75,5 @@ class ContainerTest < Minitest::Test
     q.insert(expected)
     assert "output_table4.html"
   end
-
-
 
 end

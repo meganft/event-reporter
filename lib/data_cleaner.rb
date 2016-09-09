@@ -33,6 +33,8 @@ module DataCleaner
     zipcode.to_s.rjust(5,"0")[0..4]
   end
 
+private
+
   def DataCleaner.clean_attendees(attendees)
     cleaned_attendees = {}
 

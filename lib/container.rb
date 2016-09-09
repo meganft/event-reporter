@@ -42,7 +42,7 @@ class Container
         i += 1
       end
       @queue
-    else puts "Too many entries"
+    else puts "Sorry, there are too many entries to lookup district information."
    end
   end
 
