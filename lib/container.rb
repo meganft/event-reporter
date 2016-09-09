@@ -80,7 +80,6 @@ class Container
     template = File.read "html_format.erb"
     erb_template = ERB.new template
     export_report = erb_template.result(binding)
-    # filename = "output_table4.html"
     File.open("./output/#{filename}",'w') do |file|
       file.puts export_report
     end
