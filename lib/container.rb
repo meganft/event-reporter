@@ -1,6 +1,5 @@
 require 'pry'
 require 'csv'
-# require 'sunlight/congress'
 require 'json'
 require 'open-uri'
 require 'erb'
@@ -8,8 +7,6 @@ require './lib/manager'
 require './lib/data_cleaner'
 
 class Container
-
-  # Sunlight::Base.api_key = "43e0b18e571447ecba2bb84b44dd4209"
 
   attr_accessor  :queue
 
@@ -26,8 +23,7 @@ class Container
   end
 
   def clear
-
-    @queue.clear
+    @queue = []
   end
 
   def district_info(zipcode)
@@ -51,10 +47,11 @@ class Container
   end
 
   def queue_print
-    printf "\n%-15s %-15s %-30s %-10s %-20s %-10s %-45s %-15s %s\n", "LAST NAME", "FIRST NAME", "EMAIL", "ZIPCODE", "CITY", "STATE", "STREET", "PHONE", "DISTRICT"
-    @queue.each_with_index do |row, i|
-      printf "\n%-15s %-15s %-30s %-10s %-20s %-10s %-45s %-15s %s\n",
-      queue[i]['last_name'], queue[i]['first_name'], queue[i]['email_address'], queue[i]['zipcode'], queue[i]['city'], queue[i]['state'], queue[i]['street'], queue[i]['phone']
+      i = 0
+      printf "%-12s %-12s %-42s %-10s %-27s %-7s %-40s %-12s %s\n", "LAST NAME", "FIRST NAME", "EMAIL", "ZIP CODE", "CITY", "STATE", "ADDRESS", "PHONE",  "DISTRICT"
+      @queue.each do |elem|
+        printf "%-12s %-12s %-42s %-10s %-27s %-7s %-40s %-12s %s\n", @queue[i]["last_name"], @queue[i]["first_name"], @queue[i]["email_address"], @queue[i]["zipcode"], @queue[i]["city"], @queue[i]["state"], @queue[i]["street"], @queue[i]["homephone"], @queue[i]["district"]
+        i += 1
     end
   end
 
@@ -63,49 +60,30 @@ class Container
       attendee[attribute]
       end
       queue_print
-        # binding.pry
   end
 
-  def save(filename = "event_attendes.csv")
+  def save(filename)
     Dir.mkdir("output") unless Dir.exists? "output"
     CSV.open("output/#{filename}",'wb') do |csv|
-      csv << @queue.first.keys
-      @queue.each do |hash|
-        csv << hash.values
+      if @queue != []
+        csv << @queue.first.keys
+        @queue.each do |hash|
+          csv << hash.values
+        end
+      elsif @queue == []
+        csv << ["last_name", "first_name", "email_address", "zipcode", "city", "state", "street", "homephone", "district"]
       end
-
     end
   end
 
-  def export
-    # binding.pry
-    # template = File.read "html_format.erb"
-    # erb_template = ERB.new template
-    #   @queue.each do |hash|
-    #     hash.values
-    # table = erb_template.result
-    # Dir.mkdir("output") unless Dir.exists? "output"
-
-    # File.open(filename,'w') do |file|
-    #   file.puts table
-
-    # data_template = File.read "html_format.erb"
-    # erb_template = ERB.new data_template
-    # export_report = erb_template.result(binding)
-    # filename = "output_table.html"
-    # File.open("./output/#{filename}.html",'w') do |file|
-    #   file.puts export_report
-
+  def export(filename)
     template = File.read "html_format.erb"
-
     erb_template = ERB.new template
     export_report = erb_template.result(binding)
-    filename = "output_table4.html"
+    # filename = "output_table4.html"
     File.open("./output/#{filename}",'w') do |file|
       file.puts export_report
-
     end
-
   end
 
 end

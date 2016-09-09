@@ -16,7 +16,7 @@ module Help
     puts "If there are less than 10 entries in the queue, this command will use the Sunlight API to get Congressional District information for each entry."
   end
 
-  def Help.print
+  def Help.print_queue
     puts "Prints out tab-delimited data table with a header row."
   end
 

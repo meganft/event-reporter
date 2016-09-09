@@ -11,7 +11,7 @@ class Manager
 
   def initialize
     @queue = Container.new
-    #change every Queue class to a container
+    @clean_attendees = {}
   end
 
   def load_file(filename = 'full_event_attendees.csv')
@@ -38,7 +38,24 @@ class Manager
     @queue.clear
   end
 
+  def queue_print
+    @queue.queue_print
+  end
+
+  def queue_print_by(attribute)
+    @queue.print_by(attribute)
+  end
+
+  def queue_district
+    @queue.queue_district
+  end
+
+  def queue_export(filename)
+    @queue.export(filename)
+  end
+
+  def queue_save(filename)
+    @queue.save(filename)
+  end
+
 end
-#
-# puts m = Manager.new
-# puts m.find("first_name","Sarah")

@@ -21,8 +21,6 @@ class DataCleanerTest < Minitest::Test
 
   def test_it_can_clean_email_address
     assert_equal "meganftalbot@gmail.com", DataCleaner.clean_email("meganftalbot@gmail.com")
-    #
-    # assert_equal "Talbot", DataCleaner.clean_last_name("TALBOT")
   end
 
   def test_it_can_clean_phone_number
@@ -47,8 +45,6 @@ class DataCleanerTest < Minitest::Test
     assert_equal "CO", DataCleaner.clean_state("co")
 
     assert_equal "CO", DataCleaner.clean_state("Co")
-
-    # assert_equal 2, d.clean_state.length("co")
   end
 
   def test_it_can_clean_zipcodes
@@ -58,13 +54,5 @@ class DataCleanerTest < Minitest::Test
 
     assert_equal "00000", DataCleaner.clean_zipcode("")
   end
-
-  # def test_it_returns_cleaned_attendee_in_hash
-  #   input = ("Allison")
-  #
-  #   assert_instance_of Hash,    DataCleaner.clean_attendees(input)
-  #
-  #
-  # end
 
 end

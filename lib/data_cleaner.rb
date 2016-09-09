@@ -14,7 +14,7 @@ module DataCleaner
   end
 
   def DataCleaner.clean_phone_number(homephone)
-    homephone.to_s.chars.grep(/\d/).join.rjust(10,"0")
+    homephone.to_s.chars.grep(/\d/).join.rjust(10,"0")[0..9]
   end
 
   def DataCleaner.clean_street(street)
@@ -35,7 +35,7 @@ module DataCleaner
 
   def DataCleaner.clean_attendees(attendees)
     cleaned_attendees = {}
-  
+
     attendees.each_with_index do |row, i|
     first_name = clean_first_name(row[:first_name])
     last_name = clean_last_name(row[:last_name])
@@ -49,14 +49,8 @@ module DataCleaner
 
     cleaned_attendees[i+1] = {"first_name" => first_name,"last_name" => last_name, "email_address" => email_address, "homephone" => homephone, "street" => street, "city" => city, "state" => state, "zipcode" => zipcode}
     end
-
     return cleaned_attendees
 
   end
 
-
-
 end
-
-# puts d = DataCleaner.new
-# puts d.clean_attendees

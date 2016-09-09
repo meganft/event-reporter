@@ -41,7 +41,7 @@ class ContainerTest < Minitest::Test
     q.insert(expected)
     q.insert(expected2)
 
-    assert_equal "", q.print_by("last_name")
+    assert_equal [{"first_name"=>"Sarah", "last_name"=>"Bankins", "email_address"=>"pinalevitsky@jumpstartlab.com", "homephone"=>"4145205000", "street"=>"2022 15th Street NW", "city"=>"Washington", "state"=>"DC", "zipcode"=>"20090"}, {"first_name"=>"Allison", "last_name"=>"Nguyen", "email_address"=>"arannon@jumpstartlab.com", "homephone"=>"6154385000", "street"=>"3155 19th St NW", "city"=>"Washington", "state"=>"DC", "zipcode"=>"20010"}], q.print_by("last_name")
   end
 
   def test_it_will_populate_district_number_by_zipcode
@@ -51,8 +51,6 @@ class ContainerTest < Minitest::Test
   end
 
   def test_queue_district_will_add_district_info_to_attendee
-    # skip
-    #tabke this test out?
     q = Container.new
     expected = {"first_name"=>"Allison", "last_name"=>"Nguyen",  "email_address"=>"arannon@jumpstartlab.com", "homephone"=>"6154385000","street"=>"3155 19th St NW", "city"=>"Washington", "state"=>"DC", "zipcode"=>"20010"}
     q.insert(expected)
