@@ -87,6 +87,3 @@ class Container
   end
 
 end
-# puts a = Queue.new
-# puts a.find("last_name","Johnson")
-# puts a.count
